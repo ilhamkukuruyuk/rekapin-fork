@@ -45,10 +45,10 @@ COPY --chown=www-data:www-data Caddyfile /etc/frankenphp/Caddyfile
 RUN rm -rf /app/storage /app/bootstrap/cache \
     && ln -s /tmp/storage /app/storage \
     && ln -s /tmp/bootstrap/cache /app/bootstrap/cache \
-    && setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
     && chown -R www-data:www-data /config/caddy /data/caddy /app
 
-ENV PORT=80 \
+EXPOSE 8080
+ENV PORT=8080 \
     APP_ENV=production \
     LOG_CHANNEL=stderr \
     CACHE_STORE=array \
